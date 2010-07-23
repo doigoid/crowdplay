@@ -1,0 +1,43 @@
+Installation
+------------
+
+$ wget http://svn.zope.org/*checkout*/zc.buildout/trunk/bootstrap,py
+$ python bootstrap.py
+$ ./bin/buildout
+$ mkdir links 
+$ ln -s path-to-your-music-directory links/music
+$ ./bin/update_catalog
+$ ./bin/server
+
+Icecast Instructions
+--------------------
+
+For Ices >= 2.0 streaming, edit ices-playlist.xml and change the following fields
+
+<input>
+......
+......  
+   <param name="type">script</param>
+   <param name="program">/path/to/your/crowdplay/instance/bin/next_song</param>
+......
+......
+</input>
+
+For Ices <= 0.4 (built with python support), edit the ices.conf file (ices.conf.dist if you haven't created your own yet) and change the following fields
+
+<Playlist>
+......
+......
+   <Type>python</Type>
+   <Module>ices</Module>
+......
+......
+</Playlist>
+
+You must then create a script in the working directory of your ices process called "ices.py" that implements the function "get_next_song". Here is what my ices.py script looks like:
+
+import os
+def ices_get_next():
+    return os.popen('/path/to/my/crowdplay/bin/next_song').read().strip()
+
+TODO: package this script for distribution 

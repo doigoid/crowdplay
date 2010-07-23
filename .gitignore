@@ -1,0 +1,10 @@
+*~
+bin
+parts
+develop-eggs
+eggs
+.installed.cfg
+downloads
+*.pyc
+*.pyo
+src/crowdplay.egg-info

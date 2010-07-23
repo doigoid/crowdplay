@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Playlist Queue</h1>
+
+<div id="queue">
+{% for track in queue %}
+(<a href="queue/{{ str(track['_id']) }}/1">up</a>) (<a href="queue/{{ str(track['_id']) }}/0">down</a>) [{{track['points']}}] {{ escape(str(track['artist'])) }} &mdash; {{ escape(str(track['title'])) }}<br />
+{% end %}
+
+<br />
+<h1>Music Library</h1>
+
+<div id="catalog">
+{% for track in tracks %}
+<a href="queue/{{ str(track['_id']) }}/1">{{ escape(str(track['artist'])) }} &mdash; {{ escape(str(track['title'])) }}</a><br />
+{% end %}
+
+</div>
+{% end %}
