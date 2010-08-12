@@ -38,6 +38,6 @@ You must then create a script in the working directory of your ices process call
 
 import os
 def ices_get_next():
-    return os.popen('/path/to/my/crowdplay/bin/next_song').read().strip()
+    return os.popen('/path/to/populist/bin/next_song').read().strip()
 
 TODO: package this script for distribution 
